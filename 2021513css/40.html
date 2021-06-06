@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .header{
+            background-color: #833;
+            position: relative;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .header .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+        }
+        .logo{
+            display: block;
+            width: 70px;
+            height: 40px;
+            background-color: pink;
+        }
+        .hb{
+            width: 40px;
+            height: 40px;
+            border: none;
+            position: relative;
+            background-color: #000;
+
+        }
+        .hb span{
+            position: absolute;
+            width: 32px;
+            height: 2px;
+            background-color: #fff;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+
+        }
+        .hb span:first-child{
+            top:-16px
+        }
+        .hb span:last-child{
+            bottom: -16px;
+
+        }
+        .main-nav{
+            background-color: #fa0;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+
+        }
+        .main-nav a{
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        #meun-control{
+            display: none;
+        }
+        #meun-control:checked ~ .header .main-nav{
+            display: block;
+        }
+        @media screen and (max-width: 767px){
+            .hb{
+            width: 40px;
+            height: 40px;
+            border: none;
+            position: relative;
+            background-color: #000;
+            }
+            .hb span{
+            position: absolute;
+            width: 32px;
+            height: 2px;
+            background-color: #fff;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+
+        }
+
+        
+            
+        } 
+        @media screen and (min-width: 768px){       
+            .main-nav{
+                display: flex;
+                align-items: center;
+            }
+            .main-nav a{
+                text-decoration: none;
+                padding: 10px;
+            }
+                
+        
+
+    </style>
+</head>
+<body>
+    <input type="checkbox" id ="meun-control">
+
+    <div class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                logo
+            </a>
+            <label for="meun-control" class=hb>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav  class="main-nav">
+                <a href="#">menu item</a>
+                <a href="#">menu item</a>
+                <a href="#">menu item</a>
+                <a href="#">menu item</a>
+                <a href="#">menu item</a>
+            </nav>
+        </div>
+    </div>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus, repellat nostrum eligendi in odit possimus dolores, laudantium fuga quae, officiis explicabo tenetur. Cumque quo nesciunt ducimus laudantium provident recusandae perspiciatis?</p>
+
+
+</body>
+</html>
