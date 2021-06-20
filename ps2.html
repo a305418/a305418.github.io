@@ -166,11 +166,13 @@
 
 
     <script>
+
+        alert('這裡是"終極密碼" 請按下出發 ,並開始遊戲 ');
         let showrange = document.getElementById('showrange')
         let btn_createAns = document.getElementById('start');
         let btn_check = document.getElementById('btn_check');
         let btn_delete = document.getElementById('btn_delete');
-        let numinput = document.getElementById('input'); 
+        let numinput = document.getElementById('input');
         let numbtns = document.querySelectorAll('.numbtn');
         let answer;
         let min = 0;
@@ -193,13 +195,6 @@
         }
 
         function showRange() {
-            //確認答案
-            //秀出1~100
-            //秀出範圍
-            //判斷輸入值在不在範圍內
-            //不在 =>就顯示alert
-            //  在 =>就顯示新的範圍
-            //判斷範圍
             if (Number(numinput.value) <= min || Number(numinput.value) >= max) {
                 alert('數字不在範圍內');
                 numinput.value = '';
