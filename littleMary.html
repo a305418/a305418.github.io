@@ -401,10 +401,10 @@
         
         //點擊開始按鈕事件
         document.querySelector('button').addEventListener('click', function () {
-            speed = 50;
+            speed = 0.003;
 
             let random = Math.floor(Math.random() * brickData.length) + 1;
-            steps = random;
+            steps = 100;
             allSteps = steps;
             turnAround();
 
