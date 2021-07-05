@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Hello, world!</title>
+    <link rel="shortcut icon" href="./favicon-20210609051724974.ico" />
+</head>
+
+<body>
+    <div class="container">
+        <button id="start" type="button" class="btn btn-outline-primary">開始</button>
+        <button id="again" type="button" class="btn btn-outline-secondary" disabled>放棄重來</button>
+        <button id="showAnswer" type="button" class="btn btn-outline-success" disabled>看答案</button>
+        <div class="inputArea"><span>猜答案</span>
+            <div id="showInput"> </div>
+
+
+
+            <input id="input" type="text" placeholder="輸入四個不重複數字" maxlength="4"
+                onkeyup="value=value.replace(/[^\d]/g,'')" disabled><button id="submit" type="text" disabled>猜ㄅ</button>
+        </div>
+    </div>
+    <script>
+        let btn = document.getElementsByTagName('button');
+
+        let start = document.getElementById('start');
+        let again = document.getElementById('again');
+        let showAnswer = document.getElementById('showAnswer');
+
+        let showInput = document.getElementById('showInput')
+
+        let submit = document.getElementById('submit');
+        let input = document.getElementById('input');
+
+        //看答案
+        showAnswer.addEventListener('click', function () {
+            showInput.innerHTML = '';
+            showInput.innerHTML = `<h5 ">輸了拉 答案是:${answer.join('')}</h5>`;
+            btn[3].disabled = true;
+            input.disabled = true;
+        });
+
+
+        //重來
+        again.addEventListener('click', function () {
+            let number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            shuffle(number);
+            answer = number.splice(0, 4);
+            showInput.innerHTML = '';
+            showInput.innerHTML = `<h5 > 還行吧兄弟</h5>`;
+            btn[3].disabled = false;
+            input.disabled = false
+            input.value = '';
+        });
+
+        //開始
+        let answer = [];
+        start.addEventListener('click', function () {
+            let number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            shuffle(number);
+            answer = number.splice(0, 4);
+            console.log(answer);
+            btn[0].disabled = true;
+            showInput.innerHTML = `<h5 >出發</h5>`;
+            for (let i = 1; i <= 3; i++) {
+                btn[i].disabled = false;
+            }
+            input.disabled = false;
+        });
+
+        //亂數
+        function shuffle(array) {
+            for (let i = answer.length; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        //猜
+        submit.addEventListener('click', function () {
+            if (input.value.length != 4) {
+                alert('輸入四個數字');
+            }
+            else {
+
+                let inputArray = input.value.split("");
+                let replyNum = 0;
+                outer:
+                for (let i = 0; i <= 3; i++) {
+                    let a = inputArray[i];
+                    for (let j = i + 1; j <= 3; j++) {
+                        if (a === inputArray[j]) {
+                            replyNum++;
+                        }
+                    }
+                }
+                console.log(replyNum);
+
+                if (replyNum == 0) {
+
+                    let A = inputArray.filter((x, index) => x == answer[index]).length;
+                    console.log(A);
+
+                    let B = inputArray.filter(x => answer.map(x => Number(x)).includes(Number(x))).length;
+                    B = B - A
+
+                    console.log(A, B);
+
+                    if (A == 4) {
+                        showInput.innerHTML += `<span">${A}A${B}B</span>`
+                        
+
+                        showInput.innerHTML += `<h3 >過關了 哭哭</h3>`
+                    }
+                    else {
+                        showInput.innerHTML += `<span >${A}A${B}B</span>`
+                    }
+
+                    input.value = '';
+                }
+                else {
+                    alert("重複拉");
+                    input.value = '';
+                }
+            }
+
+        });
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
